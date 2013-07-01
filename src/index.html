@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<!--
+  LIGHTSTREAMER - www.lightstreamer.com
+  JQuery Grid (jqGrid) Stock-List Demo
+  
+  Copyright 2013 Weswit s.r.l.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>Lightstreamer :: jqGrid :: Stock-List Demo</title>
+  <link rel="stylesheet" type="text/css" href="css/table.css" />
+  <link rel="stylesheet" type="text/css" href="css/ui.jqgrid.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.min.css" />
+  <style>body { font-size: 75%; }</style>
+
+  <!-- load jqGrid libraries -->  
+  <script src="js/jquery-1.9.0.min.js" type="text/javascript"></script>
+  <script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
+  <script src="js/jquery.jqGrid.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <a href="https://github.com/Weswit/Lightstreamer-example-chat-client-jquery" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:1" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+  <div id="wrap">
+    <table width="760" border="0">  
+      <tr>
+        <td><a href="http://www.lightstreamer.com" target="_blank">
+          <img src="images/logo.png" alt="LIGHTSTREAMER" hspace="0" border="0" /></a></td>
+        <td class="demoTitle">JQUERY GRID PLUGIN :: BASIC STOCK-LIST DEMO</td>
+      </tr>
+    </table>
+
+    <br />
+
+    <table id="stocktable"></table>
+  </div>
+
+<script type="text/javascript">
+
+  <!-- Lightstreamer item/field lists definition -->
+  var itemList = ["item1","item2","item3","item4","item5","item6","item7","item8","item9","item10"];
+  var fieldList = ["stock_name","last_price","time","pct_change","bid_quantity","bid","ask","ask_quantity","min","max"];
+
+  <!-- jqGrid initialization -->
+  jQuery("#stocktable").jqGrid({
+    datatype: 'local',
+    colNames:['Name','Last','Time','Change %','Bid Size','Bid','Ask','Ask Size','Min','Max'],
+    colModel:[ 
+      {name:'stock_name', index:'stock_name', width:130, sorttype:'text'}, 
+      {name:'last_price', index:'last_price', width:75, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} }, 
+      {name:'time', index:'time', width:80, align:'center', sorttype:'text'}, 
+      {name:'pct_change', index:'pct_change', width:80, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} }, 
+      {name:'bid_quantity', index:'bid_quantity', width:80, align:'right', sorttype:'int', formatter:'integer', formatoptions:{thousandsSeparator:',', defaultValue:'-'} }, 
+      {name:'bid', index:'bid', width:75, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} }, 
+      {name:'ask', index:'ask', width:75, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} },         
+      {name:'ask_quantity', index:'ask_quantity', width:80, align:'right', sorttype:'int', formatter:'integer', formatoptions:{thousandsSeparator:',', defaultValue:'-'} },  
+      {name:'min', index:'min', width:75, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} }, 
+      {name:'max', index:'max', width:75, align:'right', sorttype:'float', formatter:'number', formatoptions:{thousandsSeparator:',', decimalPlaces:2, defaultValue:'-'} },         
+    ],
+    rowNum: 10,
+    sortname: 'stock_name',
+    sortorder: 'desc',
+    caption: 'Stock Watchlist',
+    altRows: true,
+    height: 'auto'
+  }); 
+
+  for (var i = 0; i < itemList.length; i++) {
+    jQuery("#stocktable").addRowData(itemList[i], {stock_name:"Loading..."});
+  }
+</script>  
+
+<script src="js/require.js"></script>
+<script src="js/lightstreamer.js"></script>
+<script type="text/javascript">
+
+//////////////// Stock Subscription Management
+  require(["js/lsClient","Subscription"], 
+    function(lsClient,Subscription) {
+    // create a Subscription
+    var subscription = new Subscription("MERGE", itemList, fieldList);
+    subscription.setDataAdapter("QUOTE_ADAPTER");
+    subscription.setRequestedSnapshot("yes");
+
+    // attach a listener to push data to the jqGrid local data model
+    subscription.addListener({
+      onItemUpdate: function(obj) {
+        var rowData = {};
+        obj.forEachChangedField(function(fName,fPos,val) {
+          rowData[fName] = val;
+        });
+        jQuery("#stocktable").setRowData(obj.getItemName(), rowData);
+      }
+    });
+    
+    // bring the subscription to running state
+    lsClient.subscribe(subscription);
+  
+  });
+
+</script>
+
+</body>
+
+</html>
