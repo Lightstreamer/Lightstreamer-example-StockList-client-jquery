@@ -24,7 +24,7 @@ The demo includes the following client-side technologies:
 * A [Subscription](http://www.lightstreamer.com/docs/client_javascript_uni_api/Subscription.html) containing 10 items, subscribed to in <b>MERGE</b> mode.
 
 
-# Build #
+# Deploy #
 
 Before you can run the demos of this project some dependencies need to be solved:
 
