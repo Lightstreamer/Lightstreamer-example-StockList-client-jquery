@@ -1,4 +1,4 @@
-# Lightstreamer - Basic Stock-List Demo - jQuery (jqGrid) Client #
+# Lightstreamer - Basic Stock-List Demo - HTML (jQuery, jqGrid) Client #
 
 <!-- START DESCRIPTION lightstreamer-example-stocklist-client-jquery -->
 
