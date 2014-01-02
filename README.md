@@ -23,7 +23,7 @@ This page uses the <b>JavaScript Client API for Lightstreamer</b> to handle the 
 A Lightstreamer Subscription is used for subscribing to the data. The onItemUpdate callback implementation acts as a bridge between Lightstreamer and jqGrid, by injecting the real-time updates through the setRowData function.<br>
 Click on the Name column header to resort the stocks in the table.<br>
 
-The demo includes the following client-side technologies:
+The demo includes the following client-side functionalities:
 * A [Subscription](http://www.lightstreamer.com/docs/client_javascript_uni_api/Subscription.html) containing 10 items, subscribed to in <b>MERGE</b> mode.
 
 <!-- END DESCRIPTION lightstreamer-example-stocklist-client-jquery -->
