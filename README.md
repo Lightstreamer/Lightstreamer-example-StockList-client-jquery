@@ -60,7 +60,7 @@ The demos are now ready to be launched. You can find demostrations hosted in our
 
 <!-- END RELATED_ENTRIES -->
 
-## Similar demo clients that may interest you ##
+## Related Projects ##
 
 * [Lightstreamer - Stock-List Demos - HTML Clients](https://github.com/Weswit/Lightstreamer-example-Stocklist-client-javascript)
 
