@@ -34,7 +34,7 @@ You can deploy the demo in order to use the Lightstreamer server as Web server o
 If you choose the former case please ceate the folders <LS_HOME>/pages/demos/[demo_name] then copy here the contents of the src/[demo_name] folder of this project.<br>
 The client demos configuration assumes that Lightstreamer Server, Lightstreamer Adapters and this client are launched on the same machine. If you need to targeting a different Lightstreamer server please search this line:
 ```js
-var lsClient = new LightstreamerClient(protocolToUse+"//localhost:8080","DEMO");
+var lsClient = new LightstreamerClient(protocolToUse+"//localhost:"+portToUse,"DEMO");
 ```
 in lsClient.js and change it accordingly.<br>
 Anyway the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) and [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
