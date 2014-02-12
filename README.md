@@ -38,7 +38,7 @@ var lsClient = new LightstreamerClient(protocolToUse+"//localhost:"+portToUse,"D
 ```
 in lsClient.js and change it accordingly.<br>
 Anyway the [QUOTE_ADAPTER](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) and [LiteralBasedProvider](https://github.com/Weswit/Lightstreamer-example-ReusableMetadata-adapter-java) have to be deployed in your local Lightstreamer server instance. The factory configuration of Lightstreamer server already provides this adapter deployed.<br>
-The demos are now ready to be launched.
+The demo is now ready to be launched.
 
 # See Also #
 
