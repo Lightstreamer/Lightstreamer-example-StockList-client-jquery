@@ -26,15 +26,15 @@ If you want to install a version of this demo pointing to your local Lightstream
 
 * Note that, as prerequisite, the [Lightstreamer - Stock- List Demo - Java Adapter](https://github.com/Weswit/Lightstreamer-example-Stocklist-adapter-java) has to be deployed on your local Lightstreamer Server instance. Please check out that project and follow the installation instructions provided with it.
 * Launch Lightstreamer Server.
-* Get the `lightstreamer.js` file from the [Lightstreamer 5 Colosseo distribution](http://www.lightstreamer.com/download) and put it in the `src/js` folder of the demo (if that is the case, please create it). Alternatively you can build a `lightstreamer.js` file from the [online generator](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_client_javascript/tools/generator.html).
-  In that case be sure to include the LightstreamerClient, Subscription, and StatusWidget modules and to use the "Use AMD" version. 
+* Get the `lightstreamer.js` file from the [Lightstreamer 5 Colosseo distribution](http://www.lightstreamer.com/download) and put it in the `src/js` folder of the demo (if that is the case, please create it). Alternatively, you can build a `lightstreamer.js` file from the [online generator](http://www.lightstreamer.com/latest/Lightstreamer_Allegro-Presto-Vivace_5_1_Colosseo/Lightstreamer/DOCS-SDKs/sdk_client_javascript/tools/generator.html).
+  In that case, be sure to include the LightstreamerClient, Subscription, and StatusWidget modules and to use the "Use AMD" version. 
 * Get the `require.js` file form [requirejs.org](http://requirejs.org/docs/download.html) and put it in the `src/js` folder of the demo.
-* In order to use jqGrid, first a UI theme css file should be loaded. Download the desired theme (or build a custom one) from [jQueryUI](http://jqueryui.com/) site, get from the zip file the `jquery-ui-1.x.x.custom.min.css` file and `src/images` folder and put them in `src/css` folder of thie project.
+* To use jqGrid, first, a UI theme css file should be loaded. Download the desired theme (or build a custom one) from [jQueryUI](http://jqueryui.com/) site, get from the zip file the `jquery-ui-1.x.x.custom.min.css` file and `src/images` folder, and put them in `src/css` folder of the project.
 * Download the jqGrid package from the [site section downloads](http://www.trirand.com/blog/). Get the i18n folder and `jquery.jqGrid.min.js`, j`query-1.9.0.min.js` files and copy them in `src/js` folder of this project. Then get the `ui.jqgrid.css` file and copy it in `src/css` folder of this project.
 
-You can deploy the demo in order to use the Lightstreamer server as Web server or in any external Web Server you are running. 
-If you choose the former case please ceate the folders `<LS_HOME>/pages/demos/[demo_name]` then copy here the contents of the `src` folder of this project.<br>
-The client demos configuration assumes that Lightstreamer Server, Lightstreamer Adapters and this client are launched on the same machine. If you need to targeting a different Lightstreamer server please search this line:
+You can deploy the demo to use the Lightstreamer server as Web server or in any external Web Server you are running. 
+If you choose the former case, please create the folders `<LS_HOME>/pages/demos/[demo_name]` then copy here the contents of the `src` folder of this project.<br>
+The client demos configuration assumes that Lightstreamer Server, Lightstreamer Adapters, and this client are launched on the same machine. If you need to target a different Lightstreamer server, please search this line:
 ```js
 var lsClient = new LightstreamerClient(protocolToUse+"//localhost:"+portToUse,"DEMO");
 ```
