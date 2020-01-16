@@ -29,7 +29,7 @@ If you want to install a version of this demo pointing to your local Lightstream
 * Get the `lightstreamer.js` file from [npm](https://www.npmjs.com/package/lightstreamer-client-web) or [unpkg](https://unpkg.com/lightstreamer-client-web/lightstreamer.js) and put it in the `src/js` folder of the demo (if that is the case, please create it).
   Alternatively, you can generate a customized lightstreamer.js library containing only the classes you actually use;
   see the build instructions on the [GitHub page](https://github.com/Lightstreamer/Lightstreamer-lib-client-javascript#building).
-  In that case, be sure to include the LightstreamerClient, Subscription, ConnectionSharing, and StatusWidget modules and to use the "Use AMD" version. 
+  In that case, be sure to include the LightstreamerClient, Subscription, ConnectionSharing, and StatusWidget modules. 
 * Get the `require.js` file form [requirejs.org](http://requirejs.org/docs/download.html) and put it in the `src/js` folder of the demo.
 * To use jqGrid, first, a UI theme css file should be loaded. Download the desired theme (or build a custom one) from [jQueryUI](http://jqueryui.com/) site, get from the zip file the `jquery-ui-1.x.x.custom.min.css` file and `src/images` folder, and put them in `src/css` folder of the project.
 * Download the jqGrid package from the [site section downloads](http://www.trirand.com/blog/). Get the i18n folder and `jquery.jqGrid.min.js`, j`query-1.9.0.min.js` files and copy them in `src/js` folder of this project. Then get the `ui.jqgrid.css` file and copy it in `src/css` folder of this project.
